@@ -15,16 +15,18 @@
  anHttpRequest.send( null ); 
  }
  }
- var theurl='https://zolabu.github.io/labu/lamal/galhiam.json';
+ var url='https://zolabu.github.io/labu/lamal/galhiam.json';
   var client = new HttpClient();
- client.get(theurl, function(response) { 
+ client.get(url, function(response) { 
  var response1 = JSON.parse(response);
  // alert(response);
  if (response1 !== undefined) {
   // Now we know that foo is defined, we are good to go.
 
  document.getElementById("title").innerHTML = response1.Title.toString();
+  document.getElementById("number").innerHTML = response1.number;
  document.getElementById("songs").innerHTML = response1.songs[0].text;
+  
  console.log(response1);
  
 }
@@ -37,7 +39,7 @@
  Song Lyrics
  <center>
  <table border="1">
- <tr><td>Title :</td><td id="title"></td></tr>
+ <tr><td>Title :</td><td id="title"></td> <td>Number:</td><td id="number"></td></tr>
  <tr><td>songs :</td><td id="songs"></td></tr>
 
  </table>
