@@ -1,32 +1,38 @@
+
 <!DOCTYPE html>
 <html>
+<head>
+ <script type="text/javascript">
+ var HttpClient = function() {
+ this.get = function(aUrl, aCallback) {
+ var anHttpRequest = new XMLHttpRequest();
+ anHttpRequest.onreadystatechange = function() { 
+ if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+ aCallback(anHttpRequest.responseText);
+ }
+ anHttpRequest.open( "GET", aUrl, true ); 
+ anHttpRequest.send( null ); 
+ }
+ }
+ var theurl='https://zolabu.github.io/labu/lamal/galhiam.json';
+  var client = new HttpClient();
+ client.get(theurl, function(response) { 
+ var response1 = JSON.parse(response);
+ // alert(response);
+ document.getElementById("title").innerHTML = response1.name;
+ document.getElementById("songs").innerHTML = response1.songs;
+
+ }); 
+ </script>
+</head>
 <body>
+<center>
+ Javascript Get Request Test
+ <center>
+ <table border="1">
+ <tr><td>Title :</td><td id="title"></td></tr>
+ <tr><td>Song :</td><td id="songs"></td></tr>
 
-<div id="id01"></div>
-
-<script>
-var xmlhttp = new XMLHttpRequest();
-var url = "https://zolabu.github.io/labu/lamal/galhiam.json";
-
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var myArr = JSON.parse(this.responseText);
-    myFunction(myArr);
-  }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
-
-function myFunction(arr) {
-  var out = "";
-  var i;
-  for(i = 0; i < arr.length; i++) {
-    out += '<a href="' + arr[i].url + '">' + 
-    arr[i].display + '</a><br>';
-  }
-  document.getElementById("id01").innerHTML = out;
-}
-</script>
-
+ </table>
 </body>
 </html>
