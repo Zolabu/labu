@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<html>
+<head>
+ <script type="text/javascript">
+ var HttpClient = function() {
+ this.get = function(aUrl, aCallback) {
+ var anHttpRequest = new XMLHttpRequest();
+ anHttpRequest.onreadystatechange = function() { 
+ if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+ aCallback(anHttpRequest.responseText);
+ }
+ anHttpRequest.open( "GET", aUrl, true ); 
+ anHttpRequest.send( null ); 
+ }
+ }
+ var url='https://zolabu.github.io/labu/lamal/galhiam_v1.json';
+  var client = new HttpClient();
+ client.get(url, function(response) { 
+ var response1 = JSON.parse(response);
+ // alert(response);
+ if (response1 !== undefined) {
+  // Now we know that foo is defined, we are good to go.
+
+ document.getElementById("title").innerHTML = response1[0].Title.toString();
+ document.getElementById("songs").innerHTML = response1[0].text;
+  
+ console.log(response1);
+ 
+}
+
+ }); 
+ </script>
+</head>
+<body>
+<center>
+ Song Lyrics
+ <center>
+ <table border="1">
+ <tr><td>Title :</td><td id="title"></td> </td></tr>
+ <tr><td>songs :</td><td id="songs"></td></tr>
+
+ </table>
+</body>
+</html>
