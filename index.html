@@ -1,5 +1,6 @@
 
 <!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <html>
 <head>
  <script type="text/javascript">
@@ -19,19 +20,25 @@
  client.get(theurl, function(response) { 
  var response1 = JSON.parse(response);
  // alert(response);
- document.getElementById("title").innerHTML = response1.name;
- document.getElementById("songs").innerHTML = response1.songs;
+ if (response1 !== undefined) {
+  // Now we know that foo is defined, we are good to go.
+
+ document.getElementById("title").innerHTML = response1.Title.toString();
+ document.getElementById("songs").innerHTML = response1.songs[0].text;
+ console.log(response1);
+ 
+}
 
  }); 
  </script>
 </head>
 <body>
 <center>
- Javascript Get Request Test
+ Song Lyrics
  <center>
  <table border="1">
  <tr><td>Title :</td><td id="title"></td></tr>
- <tr><td>Song :</td><td id="songs"></td></tr>
+ <tr><td>songs :</td><td id="songs"></td></tr>
 
  </table>
 </body>
