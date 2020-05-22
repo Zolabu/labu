@@ -3,6 +3,24 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <html>
 <head>
+ <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+ 
  <script type="text/javascript">
  var HttpClient = function() {
  this.get = function(aUrl, aCallback) {
@@ -19,12 +37,15 @@
   var client = new HttpClient();
  client.get(url, function(response) { 
  var response1 = JSON.parse(response);
+document.getElementById("table").innerHTML ="";
  // alert(response);
  if (response1 !== undefined) {
   // Now we know that foo is defined, we are good to go.
+  for (var i = 0; i < response1.length; i++) {
+  	document.getElementById("table").innerHTML +=  "<tr><th>"+response1[i].title.toString()+"</th></tr><tr><td>"+response1[i].text+"</td></tr>"
 
- document.getElementById("title").innerHTML = response1[0].title.toString();
- document.getElementById("songs").innerHTML = response1[0].text;
+  }
+
   
  console.log(response1);
  
@@ -35,11 +56,10 @@
 </head>
 <body>
 <center>
- Song Lyrics
+Labu
  <center>
- <table border="1">
- <tr><td>Title :</td><td id="title"></td> </td></tr>
- <tr><td>songs :</td><td id="songs"></td></tr>
+ <table border="1" id="table">
+
 
  </table>
 </body>
