@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The XMLHttpRequest Object</h1><input id="in"></input>
+<button type="button" onclick="loadDoc()">Request data</button>
+
+<p id="demo"></p>
+ 
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "https://zolabu.github.io/labu/lamal/galhiam_v1.json", true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send("title");
+}
+</script>
+
+</body>
