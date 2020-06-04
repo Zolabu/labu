@@ -31,7 +31,7 @@ document.getElementById("table").innerHTML ="";
  if (response1 !== undefined) {
   // Now we know that foo is defined, we are good to go.
   for (var i = 0; i < response1.length; i++) {
-  	document.getElementById("table").innerHTML +=  "<tr><th>"+response1[i].title.toString()+"</th></tr><tr><td>"+response1[i].text+"</td></tr>"
+  	document.getElementById("tableId").innerHTML +=  "<tr><th>"+response1[i].title.toString()+"</th></tr><tr><td>"+response1[i].text+"</td></tr>"
 
   }
 
@@ -47,9 +47,7 @@ document.getElementById("table").innerHTML ="";
 <center>
 Labu
  <center>
- <table border="1" id="table">
-
-
+ <table border="1" id="tableId" class="table">
  </table>
 </body>
 </html>
